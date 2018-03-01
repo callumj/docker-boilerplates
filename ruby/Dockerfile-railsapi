@@ -1,0 +1,26 @@
+FROM ruby:2.5.0
+
+# build the app directory
+RUN mkdir /app
+WORKDIR /app
+
+# drop just the Gemfile in, to keep image layers small
+ADD Gemfile Gemfile.lock /app/
+RUN bundle install --deployment --without development test
+
+# add only the Rails folders needed for staging/production deployments
+ADD bin /app/bin
+ADD config /app/config
+ADD vendor /app/vendor
+ADD db /app/db
+ADD lib /app/lib
+ADD app /app/app
+ADD config.ru Rakefile /app/
+
+# force logging to STDOUT (instead of file logger)
+ENV RAILS_LOG_TO_STDOUT true
+
+# you may want to pass down to Docker build the Git SHA this was built with
+# you could then add a Rack middleware that appends this to a X-App-Version header for debugging
+ARG GIT_SHA
+ENV GIT_SHA ${GIT_SHA:-unknown}
