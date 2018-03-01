@@ -3,4 +3,4 @@
 test: ruby
 
 ruby:
-	cd ruby && make test
+  cd ruby && make test
