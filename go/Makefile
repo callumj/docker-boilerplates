@@ -15,6 +15,7 @@ simple: clean
 	docker rm -f docker-boilerplate-go-simple-app
 
 preferred: clean
+	mkdir -p examples/build_area
 	cp Dockerfile-simple examples/webapp/Dockerfile
 	cd examples/webapp && docker build -t docker-boilerplate-go-simple --build-arg GIT_SHA=$(GIT_SHA) .
 	docker run -v $(PWD)/examples/build_area:/host_tmp --name docker-boilerplate-go-simple-staging docker-boilerplate-go-simple cp bin/app /host_tmp
