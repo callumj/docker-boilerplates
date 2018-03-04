@@ -1,0 +1,11 @@
+FROM debian:stretch
+
+# create the binary area to hold our Golang binary
+RUN mkdir -p /bin
+WORKDIR /bin
+
+# copy just the binary (it is the only thing we need to run our Go app)
+COPY app .
+
+# set the binary as the default cmd
+CMD ["/bin/app"]
