@@ -15,3 +15,6 @@ Try `make test`
 * [Ruby](ruby/README.md)
   * Rails 5.1
   * Rails API 5.1
+* [Go](go/README.md)
+  * Building and running in one image
+  * Building in one image, second slim container with just our application binary (preferred)
