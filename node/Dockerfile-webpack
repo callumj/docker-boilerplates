@@ -1,0 +1,19 @@
+FROM node:8.9
+
+WORKDIR /app
+
+# Drop just the package.json (and package-lock) so we can keep the Docker cache clean
+# if we rarely change our packages (and avoid long build times)
+COPY package*.json ./
+RUN npm install --only=production
+
+RUN npm install webpack-cli -D
+
+# Copy everything into the app directory
+COPY . .
+
+# Allow for passing down the Git SHA as a build arg, so we can surface it as a X-App-Version header.
+ARG GIT_SHA
+ENV GIT_SHA ${GIT_SHA:-unknown}
+
+RUN npm start

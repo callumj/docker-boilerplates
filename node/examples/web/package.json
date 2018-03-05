@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "description": "Simple Node.js web app on Docker",
   "author": "Callum Jones <contact@callumj.com>",
-  "license": {
-    "type": "UNLICENSED",
-    "url": "https://spdx.org/licenses/Unlicense.html"
-  },
+  "license": "UNLICENSED",
   "repository": {
     "type": "git",
     "url": "https://github.com/callumj/docker-boilerplates.git"
