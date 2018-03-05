@@ -1,0 +1,21 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "description": "Simple Node.js web app on Docker",
+  "author": "Callum Jones <contact@callumj.com>",
+  "license": {
+    "type": "UNLICENSED",
+    "url": "https://spdx.org/licenses/Unlicense.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/callumj/docker-boilerplates.git"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
