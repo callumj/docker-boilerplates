@@ -15,11 +15,15 @@ simple: clean
 	docker rm -f docker-boilerplate-go-simple-app
 
 preferred: clean
+	# prepare the area
 	mkdir -p examples/build_area
-	cp Dockerfile-simple examples/webapp/Dockerfile
-	cd examples/webapp && docker build -t docker-boilerplate-go-simple --build-arg GIT_SHA=$(GIT_SHA) .
-	docker run -v $(PWD)/examples/build_area:/host_tmp --name docker-boilerplate-go-simple-staging docker-boilerplate-go-simple cp bin/app /host_tmp
-	docker rm -f docker-boilerplate-go-simple-staging
+	rm -rf examples/build_area/app
+	# copy in our build image Dockerfile
+	cp Dockerfile-build examples/webapp/Dockerfile
+	cd examples/webapp && docker build -t docker-boilerplate-go-build .
+	# spin up the container that compiles our binary out into `build_area`
+	docker run -e GIT_SHA=$(GIT_SHA) -v $(PWD)/examples/webapp:/go/src/github.com/callumj/docker-boilerplates/go/examples/webapp \
+	-v $(PWD)/examples/build_area:/go/src/github.com/callumj/docker-boilerplates/go/examples/webapp/bin --rm docker-boilerplate-go-build make build
 	cp Dockerfile-run examples/build_area/Dockerfile
 	cd examples/build_area && docker build -t docker-boilerplate-go-preferred .
 	docker run --name docker-boilerplate-go-preferred-app -d -p 3000:3000 docker-boilerplate-go-preferred
