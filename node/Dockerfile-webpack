@@ -10,3 +10,4 @@ RUN npm install --only=production
 RUN npm install webpack-cli -D
 
 # we will run the rest of Docker in a container, to keep this image size small
+WORKDIR /app_staging

@@ -19,6 +19,7 @@ webpack:
 	rm -rf examples/build_area/*
 	cp Dockerfile-webpack examples/webpack-sample/Dockerfile
 	cd examples/webpack-sample && docker build -t docker-boilerplate-node-webpack .
-	docker run -e GIT_SHA=$(GIT_SHA) -v $(PWD)/examples/webpack-sample:/app -v $(PWD)/examples/build_area:/app/dist --rm docker-boilerplate-node-webpack npm start
+	docker run -e GIT_SHA=$(GIT_SHA) -v $(PWD)/examples/webpack-sample:/app_staging \
+	-v $(PWD)/examples/build_area:/app_staging/dist --rm docker-boilerplate-node-webpack /app_staging/build_in_docker.sh
 	test examples/build_area/index.html
 	test examples/build_area/bundle.js
