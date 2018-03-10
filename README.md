@@ -18,3 +18,6 @@ Try `make test`
 * [Go](go/README.md)
   * Building and running in one image
   * Building in one image, second slim container with just our application binary (preferred)
+* [Node](node/README.md)
+  * Web server
+  * Webpack with a slim image, built and saved to local machine
