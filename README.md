@@ -16,8 +16,7 @@ Try `make test`
   * Rails 5.1
   * Rails API 5.1
 * [Go](go/README.md)
-  * Building and running in one image
-  * Building in one image, second slim container with just our application binary (preferred)
+  * Building and running a Go web server using Docker's multi-stage builds
 * [Node](node/README.md)
   * Web server
   * Webpack with a slim image, built and saved to local machine
