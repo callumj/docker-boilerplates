@@ -5,4 +5,4 @@ run: build
 
 build:
 	mkdir -p bin
-	go build -ldflags "-X main.gitSHA=$(GIT_SHA)" -o bin/app .
+	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags "-X main.gitSHA=$(GIT_SHA)" -o bin/app .
