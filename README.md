@@ -8,7 +8,7 @@ Status: currently a work in progress. Feel free to submit `Dockerfiles`!
 
 ## Does it work?
 
-Try `make test`
+We ensure every example works by requiring each example to be tested using `make test`. You can see the test structure in each sub `Makefile`.
 
 ## Contents
 
@@ -18,5 +18,7 @@ Try `make test`
 * [Go](go/README.md)
   * Building and running a Go web server using Docker's multi-stage builds
 * [Node](node/README.md)
-  * Web server
+  * Web server with Express
   * Webpack with a slim image, built and saved to local machine
+* [Python](python/README.md)
+  * Web server with Flask & Gunicorn
